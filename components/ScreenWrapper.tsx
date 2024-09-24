@@ -4,7 +4,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 type ScreenWrapperProps = {
   children: ReactNode;
-  bg: string;
+  bg?: string;
 };
 
 const ScreenWrapper: React.FC<ScreenWrapperProps> = ({ children, bg }) => {

@@ -17,7 +17,7 @@ export const theme = {
     medium: '500',
     semibold: '600',
     bold: '700',
-    extrabold: '800'
+    extrabold: "800" 
   },
   radius : {
     xs: 10,
