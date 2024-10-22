@@ -1,19 +1,10 @@
 import { Pressable, StyleProp, StyleSheet, Text, TextStyle, View, ViewStyle } from 'react-native'
 import React from 'react';
-import { theme } from '@/constants/theme';
-import { hp } from '@/helpers/common';
 import Loading from './Loading';
+import { theme } from '../constants/theme';
+import { hp } from '../helpers/common';
 
-interface ButtonProps {
-  buttonStyle?: StyleProp<ViewStyle>;
-  textStyle?: StyleProp<TextStyle>;
-  title?: string;
-  onPress?: () => void;
-  loading?: boolean;
-  hasShadow?: boolean
-}
-
-const Button:React.FC<ButtonProps> = ({
+const Button = ({
   buttonStyle,
   textStyle,
   title,

@@ -7,24 +7,23 @@ import {
   View,
 } from "react-native";
 import React, { useRef, useState } from "react";
-import ScreenWrapper from "@/components/ScreenWrapper";
-import { theme } from "@/constants/theme";
-import Icon from "@/components/Icon";
+import { theme } from "../constants/theme";
+import Icon from "../components/Icon";
 import { useRouter } from "expo-router";
-import { hp, wp } from "@/helpers/common";
-import Input from "@/components/Input";
-import Button from "@/components/Button";
+import { hp, wp } from "../helpers/common";
+import Input from "../components/Input";
+import Button from "../components/Button";
+import ScreenWrapper from "../components/ScreenWrapper";
 
-const SignUp = () => {
+const Login = () => {
   const router = useRouter();
   const emailRef = useRef("");
-  const nameRef = useRef("");
   const passwordRef = useRef("");
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState(false);
 
   const onsubmit = async () => {
     if (!emailRef.current || !passwordRef.current) {
-      Alert.alert("Sign Up", "Please fill all the fields");
+      Alert.alert("Login", "Please fill all the fields");
       return;
     }
   };
@@ -40,33 +39,23 @@ const SignUp = () => {
         />
 
         <View>
-          <Text style={styles.welcomeText}>Let's</Text>
-          <Text style={styles.welcomeText}>Get Started</Text>
+          <Text style={styles.welcomeText}>Hey,</Text>
+          <Text style={styles.welcomeText}>Welcome Back</Text>
         </View>
 
         <View style={styles.form}>
-          <Text style={styles.formText}>Please fill in the details to create a new account</Text>
-          <Input
-            icon={
-              <Icon
-                name="user"
-                size={26}
-                color={theme.colors.textDark}
-              />
-            }
-            placeholder="Enter your username"
-            onChangeText={(value: string) => (emailRef.current = value)}
-          />
+          <Text style={styles.formText}>Please log in to continue</Text>
           <Input
             icon={
               <Icon
                 name="mail"
                 size={26}
                 color={theme.colors.textDark}
+                onPress={() => router.back()}
               />
             }
             placeholder="Enter your email"
-            onChangeText={(value: string) => (emailRef.current = value)}
+            onChangeText={(value) => (emailRef.current = value)}
           />
           <Input
             icon={
@@ -74,25 +63,29 @@ const SignUp = () => {
                 name="lock"
                 size={26}
                 color={theme.colors.textDark}
+                onPress={() => router.back()}
               />
             }
             placeholder="Enter your password"
-            onChangeText={(value: string) => (passwordRef.current = value)}
+            onChangeText={(value) => (passwordRef.current = value)}
             secureTextEntry
           />
-          <Button title="Signup" loading={loading} onPress={onsubmit} />
+          <Pressable>
+            <Text style={styles.forgotPassword}>Forgot password?</Text>
+          </Pressable>
+          <Button title="Login" loading={loading} onPress={onsubmit} />
         </View>
 
         <View style={styles.footer}>
-          <Text style={styles.footerText}>Already have an account?</Text>
-          <Pressable onPress={() => router.navigate("/login")}>
+          <Text style={styles.footerText}>Don't have an account?</Text>
+          <Pressable onPress={() => router.navigate("/signUp")}>
             <Text
               style={[
                 styles.footerText,
                 { color: theme.colors.primaryDark, fontWeight: "600" },
               ]}
             >
-              Login
+              Sign Up
             </Text>
           </Pressable>
         </View>
@@ -101,7 +94,7 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Login;
 
 const styles = StyleSheet.create({
   container: {

@@ -1,7 +1,7 @@
 import { Button, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { useRouter } from "expo-router";
-import ScreenWrapper from "@/components/ScreenWrapper";
+import ScreenWrapper from "../components/ScreenWrapper";
 
 const index = () => {
   const router = useRouter();
